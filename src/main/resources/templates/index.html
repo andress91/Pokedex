@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${titulo}"></title>
+</head>
+<body>
+	<h1 th:text="${titulo}"></h1>
+	<a th:if="${respuesta.previus}" th:href="@{/(url=${respuesta.previus})}"> Previo</a>
+	<a th:if="${arreglo[0].id > 1}" href="javascript: history.go(-1)">Volver</a>
+	<a th:href="@{/(url=${respuesta.next})}"> Siguiente</a>
+
+	<div th:if="${arreglo.isEmpty()}">no hay pokemon en la lista!</div>
+
+	<table th:if="${not arreglo.isEmpty()}">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Picture</th>
+				<th>Name</th>
+				<th>Weight</th>
+				<th>Type</th>
+				<th>Abilities</th>
+				<th>Enlace</th>
+		
+
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="pokemon: ${arreglo}">
+				<td th:text="${pokemon.id}"></td>
+				<td><img th:src="${pokemon.sprites.front_default}" onclick="@{/pokemon/(id=${pokemon.id})}"></img></td>
+				<td th:text="${pokemon.name}"></td>
+				<td th:text="${pokemon.weight}"></td>
+				<td>
+					<ul th:each="tipo: ${pokemon.types}">
+						<li th:text="${tipo.type.name}"></li>
+					</ul>
+				</td>
+				<td>
+					<ul th:each="ability: ${pokemon.abilities}">
+
+						<li th:if="${ability.is_hidden}" th:text="${ability.ability.name+' (Oculta)'}" ></li>
+						<li th:if="${ability.is_hidden != true}" th:text="${ability.ability.name}"></li>
+					</ul>
+				</td>
+				<td>
+				<a th:href="@{/pokemon/(id=${pokemon.id})}">Ver</a> 
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+
+</body>
+</html>

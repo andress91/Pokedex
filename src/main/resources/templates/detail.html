@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${pokemon.name}"></title>
+</head>
+<body>
+	#
+	<p th:text="${pokemon.id}"></p>
+	<br>
+	<img th:src="${pokemon.sprites.front_default}"></img>
+	<img th:src="${pokemon.sprites.back_default}"></img>
+	<img th:src="${pokemon.sprites.front_shiny}"></img>
+	<img th:src="${pokemon.sprites.back_shiny}"></img>
+	<br> Nombre :
+	<p th:text="${pokemon.name}"></p>
+	<br> Peso :
+	<p th:text="${pokemon.weight}"></p>
+	<br>
+	<div>
+		<p>Tipos</p>
+		<ul th:each="tipo: ${pokemon.types}">
+			<li th:text="${tipo.type.name}"></li>
+		</ul>
+
+	</div>
+	<div>
+		<p>Habilidades</p>
+		<ul th:each="ability: ${pokemon.abilities}">
+			<li th:text="${ability.ability.name}"></li>
+		</ul>
+	</div>
+	<a href="javascript: history.go(-1)">Volver</a>
+
+	<h1>Descripcion</h1>
+	<div>
+		<p></p>
+	</div>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Videogame</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="des: ${descripcion.flavor_text_entries}">
+				<td th:if="${des.language.name == 'en'}"
+					th:text="${des.version.name}"></td>
+				<td th:if="${des.language.name == 'en'}"
+					th:text="${des.flavor_text}"></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<h1>Evolution</h1>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Etapa 1</th>
+				<th th:if="${!evolucion2.isEmpty()}">Etapa 2</th>
+				<th th:if="${!evolucion3.isEmpty()}">Etapa 2</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					<div th:each="pokemon: ${evolucion1}">
+						<img th:src="${pokemon.sprites.front_default}"></img>
+						<p th:text="${pokemon.name}"></p>
+					</div>
+				</td>
+				<td>
+					<div th:each="pokemon: ${evolucion2}">
+						<img th:src="${pokemon.sprites.front_default}"></img>
+						<p th:text="${pokemon.name}"></p>
+					</div>
+				</td>
+				<td>
+					<div th:each="pokemon: ${evolucion3}">
+						<img th:src="${pokemon.sprites.front_default}"></img>
+						<p th:text="${pokemon.name}"></p>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+
+
+
+</body>
+</html>
