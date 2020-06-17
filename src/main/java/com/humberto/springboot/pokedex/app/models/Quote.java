@@ -49,4 +49,9 @@ public class Quote {
 		this.results = results;
 	}
 
+	@Override
+	public String toString() {
+		return "Value{" + "id=" + count + ", quote='" + next + '\'' + '}';
+	}
+
 }
