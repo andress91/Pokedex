@@ -1,95 +1,168 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+	integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+	crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+	crossorigin="anonymous"></script>
 <meta charset="UTF-8" />
 <title th:text="${pokemon.name}"></title>
 </head>
 <body>
-	#
-	<p th:text="${pokemon.id}"></p>
-	<br>
-	<img th:src="${pokemon.sprites.front_default}"></img>
-	<img th:src="${pokemon.sprites.back_default}"></img>
-	<img th:src="${pokemon.sprites.front_shiny}"></img>
-	<img th:src="${pokemon.sprites.back_shiny}"></img>
-	<br> Nombre :
-	<p th:text="${pokemon.name}"></p>
-	<br> Peso :
-	<p th:text="${pokemon.weight}"></p>
-	<br>
-	<div>
-		<p>Tipos</p>
-		<ul th:each="tipo: ${pokemon.types}">
-			<li th:text="${tipo.type.name}"></li>
-		</ul>
+	<div></div>
+	<div class="container">
+		<br> <a class="btn btn-secondary btn-lg active" role="button"
+			aria-pressed="true" href="javascript: history.go(-1)">Volver</a> <br>
+		<br>
+		<div class="row ">
+			<p class="h1 text-center" th:text="${pokemon.name+' # '+pokemon.id}"></p>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">Default</h5>
 
-	</div>
-	<div>
-		<p>Habilidades</p>
-		<ul th:each="ability: ${pokemon.abilities}">
-			<li th:text="${ability.ability.name}"></li>
-		</ul>
-	</div>
-	<a href="javascript: history.go(-1)">Volver</a>
-
-	<h1>Descripcion</h1>
-	<div>
-		<p></p>
-	</div>
-
-	<table>
-		<thead>
-			<tr>
-				<th>Videogame</th>
-				<th>Description</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="des: ${descripcion.flavor_text_entries}">
-				<td th:if="${des.language.name == 'en'}"
-					th:text="${des.version.name}"></td>
-				<td th:if="${des.language.name == 'en'}"
-					th:text="${des.flavor_text}"></td>
-			</tr>
-		</tbody>
-	</table>
-
-	<h1>Evolution</h1>
-
-	<table>
-		<thead>
-			<tr>
-				<th>Etapa 1</th>
-				<th th:if="${!evolucion2.isEmpty()}">Etapa 2</th>
-				<th th:if="${!evolucion3.isEmpty()}">Etapa 2</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>
-					<div th:each="pokemon: ${evolucion1}">
-						<img th:src="${pokemon.sprites.front_default}"></img>
-						<p th:text="${pokemon.name}"></p>
+						<img th:src="${pokemon.sprites.front_default}"></img> <img
+							th:src="${pokemon.sprites.back_default}"></img>
 					</div>
-				</td>
-				<td>
-					<div th:each="pokemon: ${evolucion2}">
-						<img th:src="${pokemon.sprites.front_default}"></img>
-						<p th:text="${pokemon.name}"></p>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">Shiny</h5>
+						<img th:src="${pokemon.sprites.front_shiny}"></img> <img
+							th:src="${pokemon.sprites.back_shiny}"></img>
 					</div>
-				</td>
-				<td>
-					<div th:each="pokemon: ${evolucion3}">
-						<img th:src="${pokemon.sprites.front_default}"></img>
-						<p th:text="${pokemon.name}"></p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">Weight</h5>
+						<p class="card-text" th:text="${pokemon.weight+' g' }"></p>
 					</div>
-				</td>
-			</tr>
-		</tbody>
-	</table>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">Types</h5>
+						<div class="card-text">
+							<ul th:each="tipo: ${pokemon.types}">
+								<li th:text="${tipo.type.name}"></li>
+							</ul>
+						</div>
+
+						<h5 class="card-title">Abilities</h5>
+						<div class="card-text">
+							<ul th:each="ability: ${pokemon.abilities}">
+								<li th:if="${ability.is_hidden}"
+									th:text="${ability.ability.name+' (Hidden)'}"></li>
+								<li th:if="${ability.is_hidden != true}"
+									th:text="${ability.ability.name}"></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<h1>Description</h1>
+
+		<div class="accordion" id="accordionExample">
+			<div class="card" th:each="des: ${descripcion.flavor_text_entries}">
+				<div th:if="${des.language.name == 'en'}" class="card-header"
+					th:id="${des.version.name}">
+					<h2 class="mb-0">
+						<button th:if="${des.language.name == 'en'}"
+							th:text="${des.version.name}"
+							class="btn btn-link btn-block text-left" type="button"
+							data-toggle="collapse"
+							th:data-target="'#'+${des.version.name}+'collapse'"
+							aria-expanded="true"
+							th:aria-controls="${des.version.name}+'collapse'"></button>
+					</h2>
+				</div>
+
+				<div th:id="${des.version.name}+'collapse'" class="collapse show"
+					th:aria-labelledby="${des.version.name}"
+					data-parent="#accordionExample">
+					<div th:if="${des.language.name == 'en'}" class="card-body"
+						th:text="${des.flavor_text}"></div>
+				</div>
+			</div>
+		</div>
 
 
 
+		<h1>Evolution Chain</h1>
 
+
+		<div class="jumbotron jumbotron-fluid text-center">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<table>
+						<thead>
+							<tr>
+								<th>Etapa 1</th>
+								<th></th>
+								<th th:if="${!evolucion2.isEmpty()}">Etapa 2</th>
+								<th></th>
+								<th th:if="${!evolucion3.isEmpty()}">Etapa 3</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<div th:each="pokemon: ${evolucion1}">
+										<img th:src="${pokemon.sprites.front_default}"></img>
+										<p th:text="${pokemon.name}"></p>
+									</div>
+								</td>
+								<td>
+									<div th:each="pokemon: ${evolucion2}">
+										<img th:src="@{/images/baseline_double_arrow_black_18dp.png}"></img>
+									</div>
+								</td>
+								<td>
+									<div th:each="pokemon: ${evolucion2}">
+										<img th:src="${pokemon.sprites.front_default}"></img>
+										<p th:text="${pokemon.name}"></p>
+									</div>
+								</td>
+								<td>
+									<div th:each="pokemon: ${evolucion3}">
+										<img th:src="@{/images/baseline_double_arrow_black_18dp.png}"></img>
+									</div>
+								</td>
+								<td>
+									<div th:each="pokemon: ${evolucion3}">
+										<img th:src="${pokemon.sprites.front_default}"></img>
+										<p th:text="${pokemon.name}"></p>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

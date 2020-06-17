@@ -19,7 +19,6 @@ public class Lectura implements IServicio {
 
 	public Quote leer(String url) {
 		Quote quote = restTemplate.getForObject(url, Quote.class);
-		System.out.println(quote.getPrevius());
 		return quote;
 	}
 
@@ -28,7 +27,6 @@ public class Lectura implements IServicio {
 		List<Pokemon> list = new ArrayList<Pokemon>();
 		for (Detail data : collection.getResults()) {
 			Pokemon loop = restTemplate.getForObject(data.getUrl(), Pokemon.class);
-			// System.out.println(loop.getName());
 			list.add(loop);
 		}
 
