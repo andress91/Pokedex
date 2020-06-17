@@ -18,11 +18,11 @@ public class DetalleController {
 
 	@GetMapping({ "/", "" })
 	public String mostrar(@RequestParam Integer id, Model model) {
-		model.addAttribute("pokemon", servicio.general(id));
-		model.addAttribute("descripcion", servicio.getDescription(id));
-		model.addAttribute("evolucion1", servicio.evolutionChain(id));
-		model.addAttribute("evolucion2", servicio.evolutionChain2(id));
-		model.addAttribute("evolucion3", servicio.evolutionChain3(id));
+		model.addAttribute("pokemon", servicio.general(id)); // Datos generales del Pokemon
+		model.addAttribute("descripcion", servicio.getDescription(id)); // Descripciones generales del Pokemon
+		model.addAttribute("evolucion1", servicio.evolutionChain(id)); // Primera etapa de evolucion
+		model.addAttribute("evolucion2", servicio.evolutionChain2(id)); // Segunda etapa de evolucion
+		model.addAttribute("evolucion3", servicio.evolutionChain3(id)); // Tercera etapa de evolucion
 		return "detail";
 	}
 }

@@ -7,7 +7,7 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class AppConfig {
 
-	@Bean
+	@Bean // Para realizar la consulta a la API
 	public RestTemplate restTemplate() {
 		return new RestTemplate();
 	}

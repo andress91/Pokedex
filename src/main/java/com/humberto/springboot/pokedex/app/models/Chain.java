@@ -6,8 +6,8 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Chain {
 
-	private List<Chain> evolves_to;
-	private Detail species;
+	private List<Chain> evolves_to; // Listado de evoluciones
+	private Detail species; // Detalle de la especie
 
 	// Constructor
 	public Chain() {

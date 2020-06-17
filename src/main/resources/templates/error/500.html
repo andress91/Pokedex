@@ -8,30 +8,32 @@
 	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" th:href="@{/css/styleError404.css}"></link>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/styleError404.css}"></link>
 <meta charset="UTF-8" />
 <title>Oh!! Rotom attack</title>
 </head>
 <body>
-<div class="error-content">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 ">
-                <div class="error-text">
-                    <div >
-						<img th:src="@{/images/Pantalla.jpg}"></img>
-                    </div>
-                    <br>
-                    <h4>Oops! Internal Server Error!</h4>
-                    <p th:text="${message}"></p>
-                    <a onclick="window.location.href=this" class="btn btn-primary btn-round">Refresh</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+	<div class="error-content">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 ">
+					<div class="error-text">
+						<div>
+							<img th:src="@{/images/Pantalla.jpg}"></img>
+						</div>
+						<br>
+						<h4>Oops! Internal Server Error!</h4>
+						<p th:text="${message}"></p>
+						<a onclick="window.location.href=this"
+							class="btn btn-primary btn-round">Refresh</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-</div>
+	</div>
 
 </body>
 </html>

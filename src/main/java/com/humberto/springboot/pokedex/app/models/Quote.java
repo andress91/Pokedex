@@ -7,14 +7,16 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Quote {
 
-	private Integer count;
-	private String next;
-	private String previus;
-	private List<Detail> results;
+	private Integer count; // Conteo de pokemones disponibles
+	private String next; // Enlace al siguiente
+	private String previus; // Enlace al anterior
+	private List<Detail> results; // Listado de resultados
 
+	// Constructor
 	public Quote() {
 	}
 
+	// Getter and Setters
 	public Integer getCount() {
 		return count;
 	}

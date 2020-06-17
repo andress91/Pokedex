@@ -8,28 +8,31 @@
 	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" th:href="@{/css/styleError404.css}"></link>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/styleError404.css}"></link>
 <meta charset="UTF-8" />
 <title>Oops! This page Could Not Be Found!</title>
 </head>
 <body>
 
-<div class="error-content">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 ">
-                <div class="error-text">
-                    <div >
-						<img th:src="@{/images/404.png}"></img>
-                    </div>
-                    <h4>Oops! This page Could Not Be Found!</h4>
-                    <p>Sorry bit the page you are looking for does not exist, have been removed or name changed.</p>
-                    <a th:href="@{/}" class="btn btn-primary btn-round">Go to homepage</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+	<div class="error-content">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 ">
+					<div class="error-text">
+						<div>
+							<img th:src="@{/images/404.png}"></img>
+						</div>
+						<h4>Oops! This page Could Not Be Found!</h4>
+						<p>Sorry bit the page you are looking for does not exist, have
+							been removed or name changed.</p>
+						<a th:href="@{/}" class="btn btn-primary btn-round">Go to
+							homepage</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 </body>
 

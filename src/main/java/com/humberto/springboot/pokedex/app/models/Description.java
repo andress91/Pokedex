@@ -6,8 +6,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 public class Description {
 
-	private DetailDescription[] flavor_text_entries;
-	private Url evolution_chain;
+	private DetailDescription[] flavor_text_entries; // Informacion del pokemon
+	private Url evolution_chain; // Enlace a la cadena de evolucion
 
 	// Constructor
 	public Description() {

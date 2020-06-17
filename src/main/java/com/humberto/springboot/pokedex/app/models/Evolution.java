@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 public class Evolution {
 
-	private Integer id;
-	private Boolean baby_trigger_item;
-	private Chain chain;
+	private Integer id; // Identificador
+	private Boolean baby_trigger_item; // Si es un pokemon bebe
+	private Chain chain; // Cadena de evolucion
 
 	// Constructor
 	public Evolution() {

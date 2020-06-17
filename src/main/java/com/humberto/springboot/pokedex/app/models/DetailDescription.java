@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 public class DetailDescription {
 
-	private String flavor_text;
-	private Detail language;
-	private Detail version;
+	private String flavor_text; // Descripicion
+	private Detail language; // Idioma
+	private Detail version; // Juego
 
 	// Constructor
 	public DetailDescription() {

@@ -17,7 +17,8 @@
 	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
 	crossorigin="anonymous"></script>
 <meta charset="UTF-8" />
-<link rel="stylesheet" type="text/css" th:href="@{/css/stylePokemon.css}"></link>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/stylePokemon.css}"></link>
 <title th:text="${#strings.capitalize(pokemon.name)}"></title>
 </head>
 <body>
@@ -27,18 +28,20 @@
 			aria-pressed="true" href="javascript: history.go(-1)">Volver</a> <br>
 		<br>
 		<div class="row ">
-			<p class="h1 text-center" th:text="${#strings.capitalize(pokemon.name)+' # '+pokemon.id}"></p>
+			<p class="h1 text-center"
+				th:text="${#strings.capitalize(pokemon.name)+' # '+pokemon.id}"></p>
 		</div>
 		<div class="jumbotron jumbotron-fluid text-center">
-		<div class="row">
-		<div class="col-sm-2">
-		<p class="h3">Sprites</p>
-		
-</div>
-</div>
-		<div class="row">
-			
-			<div class="col-sm-6">
+			<div class="row">
+				<div class="col-sm-2">
+					<p class="h3">Sprites</p>
+
+				</div>
+			</div>
+			<div class="row">
+
+
+
 				<div class="card">
 					<div class="card-body">
 						<h5 class="card-title">Default</h5>
@@ -58,126 +61,158 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Weight</h5>
+					<p class="card-text" th:text="${pokemon.weight/10+' kg' }"></p>
+
+					<h5 class="card-title">Height</h5>
+					<p class="card-text" th:text="${pokemon.height/10+' m' }"></p>
+				</div>
+			</div>
 		</div>
+
+		<div class="col-sm-6">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Types</h5>
+					<div class="card-text">
+						<ul th:each="tipo: ${pokemon.types}">
+							<li th:if="${tipo.type.name == 'normal'}"
+								class="type-icon type-normal"
+								th:text="${#strings.capitalize(tipo.type.name)}"></li>
+							<li th:if="${tipo.type.name == 'fire'}"
+								class="type-icon type-fire"
+								th:text="${#strings.capitalize(tipo.type.name)}"></li>
+							<li th:if="${tipo.type.name == 'water'}"
+								class="type-icon type-water"
+								th:text="${#strings.capitalize(tipo.type.name)}"></li>
+							<li th:if="${tipo.type.name == 'electric'}"
+								class="type-icon type-electric"
+								th:text="${#strings.capitalize(tipo.type.name)}"></li>
+							<li th:if="${tipo.type.name == 'grass'}"
+								class="type-icon type-grass"
+								th:text="${#strings.capitalize(tipo.type.name)}"></li>
+							<li th:if="${tipo.type.name == 'ice'}" class="type-icon type-ice"
+								th:text="${#strings.capitalize(tipo.type.name)}"></li>
+							<li th:if="${tipo.type.name == 'fighting'}"
+								class="type-icon type-fighting"
+								th:text="${#strings.capitalize(tipo.type.name)}"></li>
+							<li th:if="${tipo.type.name == 'poison'}"
+								class="type-icon type-poison"
+								th:text="${#strings.capitalize(tipo.type.name)}"></li>
+							<li th:if="${tipo.type.name == 'ground'}"
+								class="type-icon type-ground"
+								th:text="${#strings.capitalize(tipo.type.name)}"></li>
+							<li th:if="${tipo.type.name == 'flying'}"
+								class="type-icon type-flying"
+								th:text="${#strings.capitalize(tipo.type.name)}"></li>
+							<li th:if="${tipo.type.name == 'psychic'}"
+								class="type-icon type-psychic"
+								th:text="${#strings.capitalize(tipo.type.name)}"></li>
+							<li th:if="${tipo.type.name == 'bug'}" class="type-icon type-bug"
+								th:text="${#strings.capitalize(tipo.type.name)}"></li>
+							<li th:if="${tipo.type.name == 'rock'}"
+								class="type-icon type-rock"
+								th:text="${#strings.capitalize(tipo.type.name)}"></li>
+							<li th:if="${tipo.type.name == 'ghost'}"
+								class="type-icon type-ghost"
+								th:text="${#strings.capitalize(tipo.type.name)}"></li>
+							<li th:if="${tipo.type.name == 'dragon'}"
+								class="type-icon type-dragon"
+								th:text="${#strings.capitalize(tipo.type.name)}"></li>
+							<li th:if="${tipo.type.name == 'dark'}"
+								class="type-icon type-dark"
+								th:text="${#strings.capitalize(tipo.type.name)}"></li>
+							<li th:if="${tipo.type.name == 'steel'}"
+								class="type-icon type-steel"
+								th:text="${#strings.capitalize(tipo.type.name)}"></li>
+							<li th:if="${tipo.type.name == 'fairy'}"
+								class="type-icon type-fairy"
+								th:text="${#strings.capitalize(tipo.type.name)}"></li>
+
+
+
+
+						</ul>
+					</div>
+
+					<h5 class="card-title">Abilities</h5>
+					<div class="card-text">
+						<ul th:each="ability: ${pokemon.abilities}">
+							<li th:if="${ability.is_hidden}"
+								th:text="${#strings.capitalize(ability.ability.name)+' (Hidden)'}"></li>
+							<li th:if="${ability.is_hidden != true}"
+								th:text="${#strings.capitalize(ability.ability.name)}"></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<br>
+
+	<h2>Evolution Chain</h2>
+
+
+	<div class="jumbotron jumbotron-fluid text-center">
 		<div class="row">
-			<div class="col-sm-6">
-				<div class="card">
-					<div class="card-body">
-						<h5 class="card-title">Weight</h5>
-						<p class="card-text" th:text="${pokemon.weight/10+' kg' }"></p>
+			<div class="col-md-6 offset-md-3">
+				<table>
+					<thead>
+						<tr>
+							<th>Etapa 1</th>
 
-						<h5 class="card-title">Height</h5>
-						<p class="card-text" th:text="${pokemon.height/10+' m' }"></p>
-					</div>
-				</div>
-			</div>
+							<th th:if="${!evolucion2.isEmpty()}">Etapa 2</th>
 
-			<div class="col-sm-6">
-				<div class="card">
-					<div class="card-body">
-						<h5 class="card-title">Types</h5>
-						<div class="card-text">
-							<ul th:each="tipo: ${pokemon.types}">
-								<li th:if="${tipo.type.name == 'normal'}" class="type-icon type-normal" th:text="${#strings.capitalize(tipo.type.name)}"></li>
-								<li th:if="${tipo.type.name == 'fire'}" class="type-icon type-fire" th:text="${#strings.capitalize(tipo.type.name)}"></li>
-								<li th:if="${tipo.type.name == 'water'}" class="type-icon type-water" th:text="${#strings.capitalize(tipo.type.name)}"></li>
-								<li th:if="${tipo.type.name == 'electric'}" class="type-icon type-electric" th:text="${#strings.capitalize(tipo.type.name)}"></li>
-								<li th:if="${tipo.type.name == 'grass'}" class="type-icon type-grass" th:text="${#strings.capitalize(tipo.type.name)}"></li>
-								<li th:if="${tipo.type.name == 'ice'}" class="type-icon type-ice" th:text="${#strings.capitalize(tipo.type.name)}"></li>
-								<li th:if="${tipo.type.name == 'fighting'}" class="type-icon type-fighting" th:text="${#strings.capitalize(tipo.type.name)}"></li>
-								<li th:if="${tipo.type.name == 'poison'}" class="type-icon type-poison" th:text="${#strings.capitalize(tipo.type.name)}"></li>
-								<li th:if="${tipo.type.name == 'ground'}" class="type-icon type-ground" th:text="${#strings.capitalize(tipo.type.name)}"></li>
-								<li th:if="${tipo.type.name == 'flying'}" class="type-icon type-flying" th:text="${#strings.capitalize(tipo.type.name)}"></li>
-								<li th:if="${tipo.type.name == 'psychic'}" class="type-icon type-psychic" th:text="${#strings.capitalize(tipo.type.name)}"></li>
-								<li th:if="${tipo.type.name == 'bug'}" class="type-icon type-bug" th:text="${#strings.capitalize(tipo.type.name)}"></li>
-								<li th:if="${tipo.type.name == 'rock'}" class="type-icon type-rock" th:text="${#strings.capitalize(tipo.type.name)}"></li>
-								<li th:if="${tipo.type.name == 'ghost'}" class="type-icon type-ghost" th:text="${#strings.capitalize(tipo.type.name)}"></li>
-								<li th:if="${tipo.type.name == 'dragon'}" class="type-icon type-dragon" th:text="${#strings.capitalize(tipo.type.name)}"></li>
-								<li th:if="${tipo.type.name == 'dark'}" class="type-icon type-dark" th:text="${#strings.capitalize(tipo.type.name)}"></li>
-								<li th:if="${tipo.type.name == 'steel'}" class="type-icon type-steel" th:text="${#strings.capitalize(tipo.type.name)}"></li>
-								<li th:if="${tipo.type.name == 'fairy'}" class="type-icon type-fairy" th:text="${#strings.capitalize(tipo.type.name)}"></li>
-							
-							
-							
-							
-							</ul>
-						</div>
+							<th th:if="${!evolucion3.isEmpty()}">Etapa 3</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<div th:each="pokemon: ${evolucion1}">
+									<img th:src="${pokemon.sprites.front_default}"></img>
+									<p th:text="${#strings.capitalize(pokemon.name)}"></p>
+								</div>
+							</td>
 
-						<h5 class="card-title">Abilities</h5>
-						<div class="card-text">
-							<ul th:each="ability: ${pokemon.abilities}">
-								<li th:if="${ability.is_hidden}"
-									th:text="${#strings.capitalize(ability.ability.name)+' (Hidden)'}"></li>
-								<li th:if="${ability.is_hidden != true}"
-									th:text="${#strings.capitalize(ability.ability.name)}"></li>
-							</ul>
-						</div>
-					</div>
-				</div>
+							<td>
+								<div th:each="pokemon: ${evolucion2}">
+									<img th:src="@{/images/baseline_double_arrow_black_18dp.png}"></img>
+									<img th:src="${pokemon.sprites.front_default}"></img>
+									<p th:text="${#strings.capitalize(pokemon.name)}"></p>
+								</div>
+							</td>
+
+							<td>
+								<div th:each="pokemon: ${evolucion3}">
+									<img th:src="@{/images/baseline_double_arrow_black_18dp.png}"></img>
+									<img th:src="${pokemon.sprites.front_default}"></img>
+									<p th:text="${#strings.capitalize(pokemon.name)}"></p>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
+	</div>
 
 
-		<br>
+	<h2>Description</h2>
 
-		<h2>Evolution Chain</h2>
-
-
-		<div class="jumbotron jumbotron-fluid text-center">
-			<div class="row">
-				<div class="col-md-6 offset-md-3">
-					<table>
-						<thead>
-							<tr>
-								<th>Etapa 1</th>
-
-								<th th:if="${!evolucion2.isEmpty()}">Etapa 2</th>
-
-								<th th:if="${!evolucion3.isEmpty()}">Etapa 3</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>
-									<div th:each="pokemon: ${evolucion1}">
-										<img th:src="${pokemon.sprites.front_default}"></img>
-										<p th:text="${#strings.capitalize(pokemon.name)}"></p>
-									</div>
-								</td>
-
-								<td>
-									<div th:each="pokemon: ${evolucion2}">
-										<img th:src="@{/images/baseline_double_arrow_black_18dp.png}"></img>
-										<img th:src="${pokemon.sprites.front_default}"></img>
-										<p th:text="${#strings.capitalize(pokemon.name)}"></p>
-									</div>
-								</td>
-
-								<td>
-									<div th:each="pokemon: ${evolucion3}">
-										<img th:src="@{/images/baseline_double_arrow_black_18dp.png}"></img>
-										<img th:src="${pokemon.sprites.front_default}"></img>
-										<p th:text="${#strings.capitalize(pokemon.name)}"></p>
-									</div>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-
-
-		<h2>Description</h2>
-
-		<div class="accordion" id="accordionExample">
-			<div th:each="des: ${descripcion.flavor_text_entries}">
+	<div class="accordion" id="accordionExample">
+		<div th:each="des: ${descripcion.flavor_text_entries}">
 			<div class="card" th:if="${des.language.name == 'en'}">
-				<div class="card-header"
-					th:id="${des.version.name}">
+				<div class="card-header" th:id="${des.version.name}">
 					<h2 class="mb-0">
-						<button 
-							th:text="${#strings.capitalize(des.version.name)}"
+						<button th:text="${#strings.capitalize(des.version.name)}"
 							class="btn btn-link btn-block text-left" type="button"
 							data-toggle="collapse"
 							th:data-target="'#'+${des.version.name}+'collapse'"
@@ -189,18 +224,21 @@
 				<div th:id="${des.version.name}+'collapse'" class="collapse show"
 					th:aria-labelledby="${des.version.name}"
 					data-parent="#accordionExample">
-					<div class="card-body"
-						th:text="${des.flavor_text}"></div>
+					<div class="card-body" th:text="${des.flavor_text}"></div>
 				</div>
 			</div>
-			</div>
 		</div>
+	</div>
 
 	</div>
-<footer class="text-muted">
-  <div class="container">
-  <p>Pokedex built for challenge of Modjo by <a href="https://www.linkedin.com/in/humberto-gonz%C3%A1lez-alfaro-0ba31866/">Humberto González</a>.</p>
- </div>
-</footer>
+	<footer class="text-muted">
+		<div class="container">
+			<p>
+				Pokedex built for challenge of Modjo by <a
+					href="https://www.linkedin.com/in/humberto-gonz%C3%A1lez-alfaro-0ba31866/">Humberto
+					González</a>.
+			</p>
+		</div>
+	</footer>
 </body>
 </html>
