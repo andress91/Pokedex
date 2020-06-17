@@ -10,8 +10,8 @@ public class Pokemon {
 	private Integer id; // Numero del pokemon
 	private String name; // Nombre del pokemon
 	private Integer base_experience; // Experiencia base
-	private Integer height; // Altura
-	private Integer weight; // Peso
+	private Float height; // Altura
+	private Float weight; // Peso
 	private List<Ability> abilities; // Lista de habilidades
 	private Sprite sprites; // Imagenes
 	private List<Type> types; // Tipos del pokemon
@@ -46,19 +46,19 @@ public class Pokemon {
 		this.base_experience = base_experience;
 	}
 
-	public Integer getHeight() {
+	public Float getHeight() {
 		return height;
 	}
 
-	public void setHeight(Integer height) {
+	public void setHeight(Float height) {
 		this.height = height;
 	}
 
-	public Integer getWeight() {
+	public Float getWeight() {
 		return weight;
 	}
 
-	public void setWeight(Integer weight) {
+	public void setWeight(Float weight) {
 		this.weight = weight;
 	}
 

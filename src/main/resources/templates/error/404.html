@@ -1,13 +1,38 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" th:href="@{/css/styleError404.css}"></link>
 <meta charset="UTF-8" />
-<title>Pagina no encontrada</title>
+<title>Oops! This page Could Not Be Found!</title>
 </head>
 <body>
-<img th:src="@{/images/404.png}"></img>
-<h3 th:text="${error}"></h3>
-<h3 th:text="${status}"></h3>
-<a th:href="@{/}"> Volver al inicio</a>
+
+<div class="error-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 ">
+                <div class="error-text">
+                    <div >
+						<img th:src="@{/images/404.png}"></img>
+                    </div>
+                    <h4>Oops! This page Could Not Be Found!</h4>
+                    <p>Sorry bit the page you are looking for does not exist, have been removed or name changed.</p>
+                    <a th:href="@{/}" class="btn btn-primary btn-round">Go to homepage</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
+
+
 </html>
+
