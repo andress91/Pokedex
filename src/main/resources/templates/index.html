@@ -68,7 +68,7 @@
 			<tbody>
 				<tr th:each="pokemon: ${arreglo}">
 					<td th:text="${pokemon.id}" scope="col"></td>
-					<td scope="col"><a th:href="@{/pokemon/(id=${pokemon.id})}"><img
+					<td scope="col"><a th:href="@{/pokemon/(id=${pokemon.id})}" target="_blank"><img
 							th:src="${pokemon.sprites.front_default}"></img></a></td>
 					<td scope="col" th:text="${#strings.capitalize(pokemon.name)}"></td>
 					<td scope="col" th:text="${pokemon.weight/10 + ' kg'  }"></td>

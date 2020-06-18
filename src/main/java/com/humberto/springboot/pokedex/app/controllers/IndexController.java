@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.humberto.springboot.pokedex.app.models.services.IServicio;
 
@@ -14,7 +15,7 @@ public class IndexController {
 	@Autowired
 	private IServicio servicio;
 
-	@GetMapping({"/index" })
+	@GetMapping({"/", "" ,"/index" })
 	public String index(@RequestParam(defaultValue = "https://pokeapi.co/api/v2/pokemon/") String url, Model model) {
 		model.addAttribute("titulo", "Pokedex");
 		model.addAttribute("respuesta", servicio.leer(url));
@@ -22,9 +23,5 @@ public class IndexController {
 		return "index";
 	}
 
-	@GetMapping({ "/", "" })
-	public String index(Model model) {
-		model.addAttribute("titulo", "Pokedex");
-		return "index2";
-	}
+
 }

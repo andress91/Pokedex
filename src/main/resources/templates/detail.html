@@ -22,15 +22,13 @@
 <title th:text="${#strings.capitalize(pokemon.name)}"></title>
 </head>
 <body>
-	<div></div>
+	<br>
 	<div class="container">
-		<br> <a class="btn btn-secondary btn-lg active" role="button"
-			aria-pressed="true" href="javascript: history.go(-1)">Volver</a> <br>
-		<br>
 		<div class="row ">
 			<p class="h1 text-center"
 				th:text="${#strings.capitalize(pokemon.name)+' # '+pokemon.id}"></p>
 		</div>
+		<br>
 		<div class="jumbotron jumbotron-fluid text-center">
 			<div class="row">
 				<div class="col-sm-2">
@@ -175,7 +173,8 @@
 							<tr>
 								<td>
 									<div th:each="pokemon: ${evolucion1}">
-										<img th:src="${pokemon.sprites.front_default}"></img>
+										<a th:href="@{/pokemon/(id=${pokemon.id})}">
+											<img th:src="${pokemon.sprites.front_default}"></img></a>
 										<p th:text="${#strings.capitalize(pokemon.name)}"></p>
 									</div>
 								</td>
@@ -183,7 +182,8 @@
 								<td>
 									<div th:each="pokemon: ${evolucion2}">
 										<img th:src="@{/images/baseline_double_arrow_black_18dp.png}"></img>
-										<img th:src="${pokemon.sprites.front_default}"></img>
+										<a th:href="@{/pokemon/(id=${pokemon.id})}">
+										<img th:src="${pokemon.sprites.front_default}"></img></a>
 										<p th:text="${#strings.capitalize(pokemon.name)}"></p>
 									</div>
 								</td>
@@ -191,7 +191,8 @@
 								<td>
 									<div th:each="pokemon: ${evolucion3}">
 										<img th:src="@{/images/baseline_double_arrow_black_18dp.png}"></img>
-										<img th:src="${pokemon.sprites.front_default}"></img>
+										<a th:href="@{/pokemon/(id=${pokemon.id})}">
+										<img th:src="${pokemon.sprites.front_default}"></img></a>
 										<p th:text="${#strings.capitalize(pokemon.name)}"></p>
 									</div>
 								</td>
