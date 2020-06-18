@@ -22,13 +22,4 @@ public class SpringBootPokedexApplication {
 	}
 
 	
-	@Bean
-	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
-		return args -> {
-			Quote quote = restTemplate.getForObject(
-					"https://pokeapi.co/api/v2/pokemon/", Quote.class);
-			log.info(quote.toString());
-		};
-	}
-	
 }
